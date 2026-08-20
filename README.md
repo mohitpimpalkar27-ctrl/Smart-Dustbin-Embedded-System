@@ -1,165 +1,220 @@
-# Smart-Dustbin-Embedded-System
 # 🗑️ Smart Dustbin – Automatic Waste Management System
 
-An **Arduino-based Smart Dustbin** that automatically opens and closes its lid when a person approaches. The project uses an **ultrasonic sensor** to detect objects, a **servo motor** to control the lid, and an **OLED display** to show the system status.
+<p align="center">
+  <img src="images/prototype.jpg" alt="Smart Dustbin" width="500">
+</p>
 
-## 📌 Project Overview
+<p align="center">
+  <b>An Arduino-based smart dustbin with automatic, contactless lid operation.</b>
+</p>
 
-The Smart Dustbin is designed to provide a **contactless and hygienic waste-disposal experience**. When a person brings their hand or waste near the dustbin, the ultrasonic sensor detects the object and the servo motor automatically opens the lid.
+<p align="center">
 
-After a short delay, the lid automatically closes. A push button can also be used for manual control, while the OLED display provides real-time information about the dustbin's status.
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=for-the-badge\&logo=arduino\&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge\&logo=cplusplus\&logoColor=white)
+![IoT](https://img.shields.io/badge/IoT-Technology-blue?style=for-the-badge)
+![Embedded Systems](https://img.shields.io/badge/Embedded-Systems-orange?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+</p>
+
+---
+
+## 📌 About The Project
+
+The **Smart Dustbin** is an Arduino-based automated waste-management system designed to provide a **contactless and hygienic waste disposal experience**.
+
+The system uses an **HC-SR04 ultrasonic sensor** to detect an approaching object. When an object is detected within the predefined range, the Arduino commands a **servo motor** to automatically open the dustbin lid.
+
+An **OLED display** provides real-time information about the system status, while a **push button** can be used for manual operation.
+
+### 🎯 Main Objective
+
+To develop a low-cost smart dustbin that reduces unnecessary physical contact with waste bins and demonstrates the practical application of **sensors, actuators, microcontrollers, and embedded systems**.
+
+---
 
 ## ✨ Features
 
-* 🚮 Automatic lid opening and closing
-* 📡 Ultrasonic-based object detection
-* ⚙️ Servo motor controlled lid
-* 🖥️ OLED display for system status
-* 🔘 Push-button manual control
-* 🧼 Contactless operation
-* ⚡ Arduino-based control system
-* 🔄 Automatic closing after a specified delay
-* 💡 Low-cost and easy-to-build prototype
+* 🚮 **Automatic Lid Opening**
+* 📡 **Ultrasonic Object Detection**
+* ⚙️ **Servo Motor Controlled Lid**
+* 🖥️ **OLED Status Display**
+* 🔘 **Manual Push-Button Control**
+* 🧼 **Contactless Operation**
+* ⚡ **Arduino-Based Control**
+* 🔄 **Automatic Lid Closing**
+* 💰 **Low-Cost Prototype**
+* 🛠️ **Easy to Upgrade**
 
-## 🛠️ Hardware Requirements
+---
 
-| Component                       | Purpose                          |
-| ------------------------------- | -------------------------------- |
-| Arduino Uno                     | Main microcontroller             |
-| HC-SR04 Ultrasonic Sensor       | Detects nearby objects           |
-| Servo Motor                     | Opens and closes the lid         |
-| 0.96" OLED Display (128×64 I2C) | Displays system status           |
-| Push Button                     | Manual lid control               |
-| Resistor                        | Push-button circuit              |
-| Jumper Wires                    | Connections                      |
-| Breadboard                      | Prototyping                      |
-| Dustbin with Lid                | Physical project structure       |
-| External Power Supply           | Power for components if required |
+## 🧰 Hardware Components
 
-## 💻 Software Requirements
+| Component                 | Purpose           |
+| ------------------------- | ----------------- |
+| Arduino Uno               | Main controller   |
+| HC-SR04 Ultrasonic Sensor | Object detection  |
+| Servo Motor               | Lid movement      |
+| 0.96" OLED 128×64         | Status display    |
+| Push Button               | Manual control    |
+| Jumper Wires              | Connections       |
+| Breadboard                | Prototyping       |
+| Smart Dustbin Body        | Project structure |
+| Power Supply              | Provides power    |
 
-* Arduino IDE
-* Arduino C/C++
-* Adafruit SSD1306 Library
-* Adafruit GFX Library
-* Servo Library
+---
 
-## 🔌 Working Principle
+## 💻 Software & Technologies
 
-The system works in the following sequence:
+* **Arduino IDE**
+* **Embedded C/C++**
+* **Arduino Uno**
+* **Ultrasonic Sensing**
+* **Servo Motor Control**
+* **I2C Communication**
+* **OLED Display**
 
-1. The **ultrasonic sensor** continuously measures the distance between the sensor and an approaching object.
-2. If an object comes within the predefined detection range, the Arduino identifies it.
-3. The **servo motor rotates** and opens the dustbin lid.
-4. The OLED display shows a message such as **"Lid Open"**.
-5. After the object moves away and the specified delay expires, the servo rotates back.
-6. The lid closes automatically.
-7. The OLED display changes to **"Lid Closed"**.
-8. The **push button** can be used to manually operate the lid when required.
-
-## 🔄 System Flow
+### 📚 Libraries Used
 
 ```text
-        START
-          │
-          ▼
-   Initialize Arduino
-          │
-          ▼
- Initialize Ultrasonic,
- OLED & Servo
-          │
-          ▼
-  Measure Distance
-          │
-          ▼
-   Object Detected?
-      ┌───┴───┐
-     YES      NO
-      │        │
-      ▼        │
- Open Lid      │
-      │        │
-      ▼        │
-OLED: OPEN     │
-      │        │
-      ▼        │
- Wait / Delay  │
-      │        │
-      ▼        │
- Close Lid ◄───┘
-      │
-      ▼
-OLED: CLOSED
-      │
-      ▼
- Repeat
+Servo.h
+Wire.h
+Adafruit_GFX.h
+Adafruit_SSD1306.h
 ```
 
-## 📐 Circuit Connections
+---
 
-### HC-SR04 Ultrasonic Sensor
+# 🔌 Circuit Diagram
 
-| HC-SR04 | Arduino     |
-| ------- | ----------- |
-| VCC     | 5V          |
-| GND     | GND         |
-| TRIG    | Digital Pin |
-| ECHO    | Digital Pin |
+<p align="center">
+  <img src="images/circuit.jpg" alt="Smart Dustbin Circuit Diagram" width="700">
+</p>
 
-### Servo Motor
+### Basic Connections
 
-| Servo Wire | Connection                      |
-| ---------- | ------------------------------- |
-| VCC        | 5V / External 5V                |
-| GND        | GND                             |
-| Signal     | Arduino PWM-capable digital pin |
+| Component    | Arduino Connection                |
+| ------------ | --------------------------------- |
+| HC-SR04 VCC  | 5V                                |
+| HC-SR04 GND  | GND                               |
+| HC-SR04 TRIG | Digital Pin                       |
+| HC-SR04 ECHO | Digital Pin                       |
+| Servo Signal | Digital PWM Pin                   |
+| OLED SDA     | A4                                |
+| OLED SCL     | A5                                |
+| OLED GND     | GND                               |
+| OLED VCC     | According to module specification |
+| Push Button  | Digital Input                     |
 
-> **Note:** If the servo draws significant current, use an external 5V supply and connect its GND to Arduino GND.
+> ⚠️ **Note:** If the servo requires more current than the Arduino can safely supply, use a separate 5V supply for the servo and connect the external supply GND to Arduino GND.
 
-### OLED Display
+---
 
-| OLED | Arduino Uno |
-| ---- | ----------- |
-| VCC  | 5V*         |
-| GND  | GND         |
-| SDA  | A4          |
-| SCL  | A5          |
-
-*Use the voltage specified by your particular OLED module.
-
-### Push Button
-
-The push button is connected to a digital input pin and configured using an appropriate pull-up/pull-down arrangement.
-
-## 📂 Project Structure
+# ⚙️ How It Works
 
 ```text
-Smart-Dustbin/
-│
-├── Smart_Dustbin.ino
-├── README.md
-│
-└── images/
-    ├── circuit.jpg
-    ├── prototype.jpg
-    └── working.jpg
+        👤 Object Approaches
+                │
+                ▼
+       📡 Ultrasonic Sensor
+                │
+                ▼
+       Object Within Range?
+          ┌─────┴─────┐
+         YES           NO
+          │             │
+          ▼             │
+    ⚙️ Servo Opens      │
+       The Lid          │
+          │             │
+          ▼             │
+    🖥️ OLED: OPEN       │
+          │             │
+          ▼             │
+       Wait/Delay       │
+          │             │
+          ▼             │
+    ⚙️ Servo Closes ◄───┘
+       The Lid
+          │
+          ▼
+    🖥️ OLED: CLOSED
+          │
+          ▼
+        Repeat
 ```
 
-## 🚀 Installation & Setup
+---
 
-### 1. Install Arduino IDE
+# 🧪 Working Demonstration
 
-Download and install the Arduino IDE.
+## 📸 Prototype
 
-### 2. Install Required Libraries
+<p align="center">
+  <img src="images/prototype.jpg" alt="Smart Dustbin Prototype" width="600">
+</p>
+
+## 🔧 Hardware Setup
+
+<p align="center">
+  <img src="images/hardware.jpg" alt="Hardware Setup" width="600">
+</p>
+
+## 🖥️ OLED Display
+
+<p align="center">
+  <img src="images/oled.jpg" alt="OLED Display" width="400">
+</p>
+
+---
+
+# 🎥 Project Demonstration Video
+
+### ▶️ Working Video
+
+Upload your demonstration video to **YouTube** and replace the link below:
+
+```text
+https://www.youtube.com/watch?v=YOUR_VIDEO_ID
+```
+
+Then add:
+
+```markdown
+[![Smart Dustbin Working](images/prototype.jpg)](https://www.youtube.com/watch?v=YOUR_VIDEO_ID)
+```
+
+> 💡 Clicking the project image will open the demonstration video on YouTube.
+
+---
+
+# 🚀 Getting Started
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/Smart-Dustbin.git
+```
+
+## 2️⃣ Open the Project
+
+Open:
+
+```text
+Smart_Dustbin.ino
+```
+
+using **Arduino IDE**.
+
+## 3️⃣ Install Required Libraries
 
 From Arduino IDE:
 
 ```text
 Sketch
- → Include Library
- → Manage Libraries
+→ Include Library
+→ Manage Libraries
 ```
 
 Install:
@@ -169,19 +224,13 @@ Adafruit GFX Library
 Adafruit SSD1306
 ```
 
-The Servo library is generally included with the Arduino IDE.
+The `Servo` and `Wire` libraries are generally available with the Arduino environment.
 
-### 3. Connect the Components
+## 4️⃣ Connect the Hardware
 
-Connect the ultrasonic sensor, servo motor, OLED display and push button according to the circuit configuration.
+Connect all components according to the circuit diagram provided above.
 
-### 4. Upload the Code
-
-Open:
-
-```text
-Smart_Dustbin.ino
-```
+## 5️⃣ Upload the Code
 
 Select:
 
@@ -189,135 +238,155 @@ Select:
 Tools → Board → Arduino Uno
 ```
 
-Select the correct COM port and upload the program.
+Then select the appropriate COM port and click **Upload**.
 
-### 5. Test the System
+## 6️⃣ Test the System
 
 Bring your hand or an object near the ultrasonic sensor.
 
-The system should:
-
-```text
-Object Detected
-       ↓
-   Lid Opens
-       ↓
- OLED: Lid Open
-       ↓
-     Delay
-       ↓
-   Lid Closes
-       ↓
- OLED: Lid Closed
-```
-
-## 🎯 Applications
-
-The Smart Dustbin can be used in:
-
-* 🏠 Homes
-* 🏫 Schools and colleges
-* 🏢 Offices
-* 🏥 Hospitals
-* 🏨 Hotels
-* 🛍️ Shopping malls
-* 🚉 Public places
-* 🏭 Industrial environments
-
-## 🌱 Advantages
-
-* Reduces direct contact with the dustbin
-* Improves hygiene
-* Provides convenient waste disposal
-* Simple and affordable design
-* Easy to modify and upgrade
-* Suitable for IoT and embedded-system learning
-* Can reduce unnecessary touching of waste-bin surfaces
-
-## 🔮 Future Enhancements
-
-The project can be upgraded with additional smart features:
-
-* 📱 Mobile application control
-* ☁️ IoT-based monitoring
-* 📊 Waste-level monitoring
-* 🔔 Full-bin notification
-* 📷 Camera-based waste classification
-* ♻️ Automatic wet/dry waste segregation
-* 🌐 Cloud-based data monitoring
-* 🔋 Battery/solar-powered operation
-* 📍 Multiple dustbin monitoring through a central dashboard
-* 🤖 AI-based waste classification
-
-## 🧪 Expected Output
-
-When the system is powered on:
-
-```text
-SMART DUSTBIN
-System Ready
-```
-
-When an object is detected:
-
-```text
-Object Detected
-Lid Opening...
-```
-
-After opening:
-
-```text
-LID OPEN
-Please Dispose Waste
-```
-
-After the delay:
-
-```text
-Lid Closing...
-```
-
-Finally:
-
-```text
-LID CLOSED
-System Ready
-```
-
-## 📸 Project Demonstration
-
-Add your project images inside the `images` folder and update this section:
-
-```markdown
-## Project Images
-
-![Smart Dustbin](images/prototype.jpg)
-
-![Circuit](images/circuit.jpg)
-
-![Working Model](images/working.jpg)
-```
-
-## 👨‍💻 Technologies Used
-
-* **Arduino**
-* **Embedded C/C++**
-* **Ultrasonic Sensing**
-* **Servo Motor Control**
-* **I2C Communication**
-* **OLED Display**
-* **Embedded Systems**
-
-## 📜 License
-
-This project is created for **educational and academic purposes**. You are free to modify and improve the project for learning and development.
-
-## ⭐ Acknowledgement
-
-This project was developed as an **embedded-system prototype for smart waste management**, demonstrating the practical use of sensors, actuators, microcontrollers and display modules.
+The dustbin should automatically open and then close after the configured delay.
 
 ---
 
-### ⭐ If you find this project useful, consider giving the repository a star!
+# 📂 Project Structure
+
+```text
+Smart-Dustbin/
+│
+├── README.md
+├── Smart_Dustbin.ino
+│
+├── images/
+│   ├── prototype.jpg
+│   ├── circuit.jpg
+│   ├── hardware.jpg
+│   └── oled.jpg
+│
+└── LICENSE
+```
+
+---
+
+# 🔮 Future Enhancements
+
+The current prototype can be further upgraded with:
+
+* 📱 Mobile application control
+* ☁️ IoT/cloud monitoring
+* 📊 Waste-level monitoring
+* 🔔 Full-bin notification
+* ♻️ Wet/dry waste segregation
+* 🤖 AI-based waste classification
+* 📷 Camera-based waste detection
+* 🌐 Web dashboard
+* 🔋 Solar/battery operation
+* 📍 Multiple-bin monitoring
+
+---
+
+# 🌍 Applications
+
+The Smart Dustbin can be deployed in:
+
+* 🏠 Homes
+* 🏫 Schools & Colleges
+* 🏢 Offices
+* 🏥 Hospitals
+* 🏨 Hotels
+* 🛍️ Shopping Malls
+* 🚉 Public Places
+* 🏭 Industrial Areas
+
+---
+
+# 📈 Advantages
+
+✅ Hygienic contactless operation
+✅ Simple and affordable design
+✅ Automatic lid control
+✅ Easy to maintain
+✅ Low power requirements
+✅ Suitable for educational projects
+✅ Easily expandable with IoT features
+
+---
+
+# 👨‍💻 Project Team
+
+### 🚀 Team Members
+
+| Name                      | Role                     | GitHub                                     |
+| ------------------------- | ------------------------ | ------------------------------------------ |
+| **Mohit Sunil Pimpalkar** | Project Lead / Developer | [GitHub](https://github.com/YOUR_USERNAME) |
+| **Team Member 2**         | Hardware & Electronics   | [GitHub](https://github.com/USERNAME)      |
+| **Team Member 3**         | Software & Testing       | [GitHub](https://github.com/USERNAME)      |
+| **Team Member 4**         | Documentation & Design   | [GitHub](https://github.com/USERNAME)      |
+
+> Replace the placeholder names and GitHub usernames with your actual team details.
+
+---
+
+# 👨‍🏫 Project Guidance
+
+**Project Guide:**
+`Your Professor's Name`
+
+**Department:** Computer Engineering
+
+**College:** `Your College Name`
+
+**Academic Year:** 2026–2027
+
+---
+
+# 📊 Project Status
+
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+
+| Module               | Status         |
+| -------------------- | -------------- |
+| Arduino Programming  | ✅ Completed    |
+| Ultrasonic Detection | ✅ Completed    |
+| Servo Control        | ✅ Completed    |
+| OLED Display         | ✅ Completed    |
+| Push Button          | ✅ Completed    |
+| Automatic Lid        | ✅ Completed    |
+| Hardware Integration | ✅ Completed    |
+| Testing              | ✅ Completed    |
+| Documentation        | 🚧 In Progress |
+
+---
+
+# 📜 License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project for educational and development purposes.
+
+---
+
+# ⭐ Support
+
+If you found this project useful:
+
+⭐ **Star this repository**
+🍴 **Fork the repository**
+🐛 **Report issues**
+💡 **Suggest improvements**
+
+---
+
+## 🙏 Acknowledgement
+
+We would like to thank our project guide, faculty members, and everyone who supported us during the development and testing of this project.
+
+---
+
+<p align="center">
+
+### 🗑️ Smart Dustbin
+
+**Building a cleaner and smarter future with technology. 🌱**
+
+</p>
 
