@@ -14,7 +14,6 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge\&logo=cplusplus\&logoColor=white)
 ![IoT](https://img.shields.io/badge/IoT-Technology-blue?style=for-the-badge)
 ![Embedded Systems](https://img.shields.io/badge/Embedded-Systems-orange?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 </p>
 
